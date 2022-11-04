@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cal</title>
+    <link rel="stylesheet" href="style.cs" />
+  </head>
+
+  <body>
+    <h1 id="heading">Calculator</h1>
+    <h2 class = "calcdisplaycss" id="calcdisplay">0</h2>
+    <div class = "numpadcss" id="numpad"></div>
+    <button class="brow" onclick="divide()">/</button>
+    <button class="brow" onclick="multiply()">x</button>
+    <button class="brow" onclick="subtract()">-</button>
+    <button class="brow" onclick="addto()">+</button>
+    <button class="brow" onclick="equals()">=</button>
+    <button class="brow" onclick="rm()">AC</button>
+  </body>
+
+  <script>
+    let result = 0;
+    let operator = "";
+    let answer = "0";
+
+    function enter(digit) {
+      const calcdisplay = document.getElementById("calcdisplay");
+      if (calcdisplay.textContent === "0") {
+        calcdisplay.textContent = "";
+      }
+      calcdisplay.textContent += String(digit);
+    }
+
+    const numpad = document.getElementById("numpad");
+    for (let i = 0; i < 10; i++) {
+      const b = document.createElement("button");
+      b.onclick = () => {
+        enter(i);
+      };
+      b.textContent = i;
+      numpad.appendChild(b);
+    }
+
+    function rm() {
+      const calcdisplay = document.getElementById("calcdisplay");
+      calcdisplay.textContent = "0";
+    }
+    function divide() {
+      const calcdisplay = document.getElementById("calcdisplay");
+      result = parseInt(calcdisplay.textContent);
+      calcdisplay.textContent = "0";
+      operator = "/";
+    }
+    function multiply() {
+      const calcdisplay = document.getElementById("calcdisplay");
+      result = parseInt(calcdisplay.textContent);
+      calcdisplay.textContent = "0";
+      operator = "*";
+    }
+    function subtract() {
+      const calcdisplay = document.getElementById("calcdisplay");
+      result = parseInt(calcdisplay.textContent);
+      calcdisplay.textContent = "0";
+      operator = "-";
+    }
+    function addto() {
+      const calcdisplay = document.getElementById("calcdisplay");
+      result = parseInt(calcdisplay.textContent);
+      calcdisplay.textContent = "0";
+      operator = "+";
+    }
+
+    function equals() {
+      const calcdisplay = document.getElementById("calcdisplay");
+      if (operator === "/") {
+        answer = result / parseInt(calcdisplay.textContent);
+        calcdisplay.textContent = answer;
+      }
+      if (operator === "+") {
+        answer = result + parseInt(calcdisplay.textContent);
+        calcdisplay.textContent = answer;
+      }
+      if (operator === "*") {
+        answer = result * parseInt(calcdisplay.textContent);
+        calcdisplay.textContent = answer;
+      }
+      if (operator === "-") {
+        answer = result - parseInt(calcdisplay.textContent);
+        calcdisplay.textContent = answer;
+      }
+    }
+
+    //operator = string
+    //in the result, is string(+); string(/)
+  </script>
+</html>
